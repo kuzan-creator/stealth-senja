@@ -1,0 +1,98 @@
+/* Shadows of Pasar Senja — dark night-market theme, high contrast, big type. */
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; }
+body {
+  background: #0b0e1a;
+  color: #f2e8d5;
+  font-family: "Segoe UI", system-ui, -apple-system, Arial, sans-serif;
+  min-height: 100vh;
+}
+.top {
+  display: flex; justify-content: space-between; align-items: flex-start; gap: 16px;
+  padding: 14px 22px 8px;
+  background: linear-gradient(180deg, #1a1230, #0b0e1a);
+  border-bottom: 3px solid #f5b942;
+}
+.top h1 {
+  margin: 0; font-size: 34px; letter-spacing: 1px; color: #ffd75e;
+  text-shadow: 0 2px 0 #7a2e0e, 0 4px 14px rgba(0,0,0,.7);
+}
+.tagline { margin: 4px 0 0; color: #cbb98a; font-size: 15px; }
+.hud { display: flex; flex-wrap: wrap; gap: 8px; justify-content: flex-end; padding-top: 6px; }
+.pill {
+  background: #232742; border: 2px solid #4a4f7a; border-radius: 999px;
+  padding: 7px 13px; font-size: 15px; font-weight: 700; white-space: nowrap;
+}
+.pill.timer.low { border-color: #ff5346; color: #ff8a80; }
+.alert-calm { color: #8be28b; border-color: #3f7a3f; }
+.alert-suspicious { color: #ffd75e; border-color: #a8842a; }
+.alert-alarm { color: #ff6b5e; border-color: #ff5346; animation: blink 0.7s steps(2) infinite; }
+@keyframes blink { 50% { opacity: .55; } }
+
+.levels {
+  display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  padding: 10px 22px; background: #12152a;
+}
+.level-tab {
+  background: #232742; color: #f2e8d5; border: 2px solid #4a4f7a; border-radius: 8px;
+  padding: 8px 14px; font-size: 15px; font-weight: 700; cursor: pointer;
+}
+.level-tab.active { background: #f5b942; color: #1a1230; border-color: #ffd75e; }
+.level-name { font-size: 17px; font-weight: 800; margin-left: 8px; }
+.level-sub { font-size: 14px; color: #cbb98a; }
+
+.board {
+  display: flex; gap: 18px; align-items: flex-start;
+  padding: 14px 22px; max-width: 1360px; margin: 0 auto;
+}
+#game {
+  width: 960px; max-width: 72vw; height: auto; display: block;
+  border: 4px solid #f5b942; border-radius: 10px; background: #10131f;
+  box-shadow: 0 10px 40px rgba(0,0,0,.6);
+}
+.side { flex: 1; min-width: 250px; background: #141829; border: 2px solid #2c3157; border-radius: 10px; padding: 14px 16px; }
+.side h2 { margin: 4px 0 8px; font-size: 18px; color: #ffd75e; }
+.side ul { margin: 0 0 10px; padding-left: 20px; font-size: 14px; line-height: 1.65; }
+.side p { font-size: 14px; line-height: 1.6; color: #ddd2b8; }
+.cone-y { color: #ffd75e; font-weight: 800; }
+.shadow-swatch { background: #1c2f57; color: #9db8ff; padding: 0 6px; border-radius: 4px; font-weight: 700; }
+.objective { font-weight: 700; color: #8be28b; }
+.message { font-weight: 700; color: #ffd75e; min-height: 40px; }
+.legend { display: flex; flex-wrap: wrap; gap: 8px 14px; font-size: 13px; margin-top: 10px; }
+.dot { display: inline-block; width: 12px; height: 12px; border-radius: 50%; margin-right: 5px; vertical-align: -1px; }
+.dot.player { background: #4dd0e1; }
+.dot.guard { background: #ff5346; }
+.dot.dog { background: #c98a4b; }
+.dot.item { background: #ffd75e; }
+.dot.exit { background: #4caf50; }
+.dot.cam { background: #b388ff; }
+
+.controls {
+  display: flex; gap: 10px; align-items: center; flex-wrap: wrap;
+  padding: 6px 22px 18px; max-width: 1360px; margin: 0 auto;
+}
+.controls button {
+  background: #f5b942; color: #1a1230; border: none; border-radius: 8px;
+  padding: 11px 18px; font-size: 16px; font-weight: 800; cursor: pointer;
+}
+.controls button:hover { background: #ffd75e; }
+.help { font-size: 13px; color: #a99e7e; margin: 0; flex: 1; min-width: 280px; }
+
+.overlay {
+  position: fixed; inset: 0; background: rgba(5, 6, 14, .82);
+  display: flex; align-items: center; justify-content: center; z-index: 10;
+}
+.overlay[hidden] { display: none; }
+.overlay-card {
+  text-align: center; max-width: 640px; padding: 34px 40px;
+  background: #141829; border: 3px solid #f5b942; border-radius: 16px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.8);
+}
+.kicker { color: #f5b942; letter-spacing: 3px; font-weight: 800; margin: 0 0 8px; font-size: 14px; }
+.overlay-card h2 { margin: 0 0 10px; font-size: 40px; color: #ffd75e; line-height: 1.1; }
+.overlay-card p { font-size: 17px; line-height: 1.55; color: #e8dcbd; }
+.overlay-card button {
+  background: #f5b942; color: #1a1230; border: none; border-radius: 10px;
+  padding: 14px 30px; font-size: 19px; font-weight: 800; cursor: pointer; margin-top: 8px;
+}
+.overlay-hint { font-size: 13px !important; color: #a99e7e !important; }

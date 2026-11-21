@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Shadows of Pasar Senja — Stealth Heist</title>
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<header class="top">
+  <div>
+    <h1>Shadows of Pasar Senja</h1>
+    <p class="tagline">Stealth heist di Indonesia — selinap dalam bayangan, curi pusaka, jangan ketahuan.</p>
+  </div>
+  <div class="hud">
+    <span id="alert-pill" class="pill alert-calm">● TENANG</span>
+    <span id="timer" class="pill timer">3:00</span>
+    <span id="items" class="pill">Pusaka: 0/3</span>
+    <span id="lives" class="pill">Nyawa: ♥♥♥</span>
+    <span id="score" class="pill">Skor: 0</span>
+  </div>
+</header>
+
+<nav class="levels" aria-label="Pilih level">
+  <button class="level-tab active" type="button">1 · Pasar Malam</button>
+  <button class="level-tab" type="button">2 · Museum Pusaka</button>
+  <button class="level-tab" type="button">3 · Pelabuhan Senja</button>
+  <span id="level-name" class="level-name">Level 1 — Pasar Malam Senja</span>
+  <span id="level-sub" class="level-sub">Pasar malam — kios Bu Lastri, penjaga berpatroli</span>
+</nav>
+
+<main class="board">
+  <canvas id="game" width="960" height="600" aria-label="Arena stealth top-down: pemain menyelinap melewati penjaga"></canvas>
+  <aside class="side">
+    <h2>Cara Main</h2>
+    <ul>
+      <li><b>WASD / Panah</b> — bergerak</li>
+      <li><b>Shift</b> — jongkok / menyelinap (pelan, senyap, sulit dilihat)</li>
+      <li><b>E</b> — ambil pusaka / matikan lampu</li>
+      <li><b>Q</b> — lempar koin pengalih perhatian</li>
+      <li><b>R</b> — ulang level &nbsp;·&nbsp; <b>M</b> — suara</li>
+    </ul>
+    <h2>Aturan Bayangan</h2>
+    <p>Kerucut <span class="cone-y">kuning</span> = pandangan penjaga. Di dalam
+    <span class="shadow-swatch">bayangan</span> kamu hampir tak terlihat — apalagi sambil jongkok.
+    Lampu menyala membuatmu mudah ketahuan; matikan dengan E. Kalau meter penjaga penuh,
+    ia mengejarmu. Tertangkap 3 kali = misi gagal.</p>
+    <p id="objective" class="objective">Tujuan: curi 3 pusaka, lalu kabur lewat pintu keluar hijau.</p>
+    <p id="message" class="message" role="status">Tetap di bayangan. Penjaga sedang berpatroli.</p>
+    <div class="legend">
+      <span><i class="dot player"></i>Kamu (Raka)</span>
+      <span><i class="dot guard"></i>Penjaga</span>
+      <span><i class="dot dog"></i>Anjing</span>
+      <span><i class="dot item"></i>Pusaka</span>
+      <span><i class="dot exit"></i>Pintu keluar</span>
+      <span><i class="dot cam"></i>Kamera</span>
+    </div>
+  </aside>
+</main>
+
+<footer class="controls">
+  <button id="start-btn" type="button">Mulai Misi (Enter)</button>
+  <button id="restart-btn" type="button">Ulang Level (R)</button>
+  <button id="mute-btn" type="button">Suara: Hidup (M)</button>
+  <p class="help">Ambil semua pusaka lalu capai pintu keluar. Koin (Q) memancing penjaga ke titik jatuhnya. Anjing mendengar langkah — jongkok saat dekat.</p>
+</footer>
+
+<div id="overlay" class="overlay" hidden>
+  <div class="overlay-card">
+    <p id="overlay-kicker" class="kicker">PASAR SENJA · 21.00 WIB</p>
+    <h2 id="overlay-title">Shadows of Pasar Senja</h2>
+    <p id="overlay-text">Malam turun di pasar. Tiga pusaka menunggu — dan penjaga tidak pernah tidur.</p>
+    <button id="overlay-btn" type="button">Mulai Menyusup</button>
+    <p class="overlay-hint">WASD bergerak · Shift jongkok · E ambil · Q lempar koin</p>
+  </div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
